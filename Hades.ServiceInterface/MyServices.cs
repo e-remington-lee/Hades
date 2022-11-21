@@ -5,8 +5,15 @@ namespace Hades.ServiceInterface;
 
 public class MyServices : Service
 {
-    public object Any(Hello request)
+    public HelloResponse Get(Hello request)
     {
         return new HelloResponse { Result = $"Hello, {request.Name}!" };
     }
+
+    public DepositResponse Get(Deposit deposit)
+    {
+        return new DepositResponse() { ResponseCode = 200 };
+    }
+
+
 }
