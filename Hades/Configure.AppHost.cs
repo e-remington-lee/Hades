@@ -13,7 +13,7 @@ public class AppHost : AppHostBase, IHostingStartup
             // Configure ASP.NET Core IOC Dependencies
         });
 
-    public AppHost() : base("Hades", typeof(MyServices).Assembly) {}
+    public AppHost() : base("Hades", typeof(DepositHandler).Assembly) {}
 
     public override void Configure(Container container)
     {
