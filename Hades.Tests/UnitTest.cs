@@ -13,7 +13,7 @@ public class UnitTest
     public UnitTest()
     {
         appHost = new BasicAppHost().Init();
-        appHost.Container.AddTransient<MyServices>();
+        appHost.Container.AddTransient<DepositHandler>();
     }
 
     [OneTimeTearDown]
@@ -22,10 +22,12 @@ public class UnitTest
     [Test]
     public void Can_call_MyServices()
     {
-        var service = appHost.Container.Resolve<MyServices>();
+        var service = appHost.Container.Resolve<DepositHandler>();
 
-        var response = (HelloResponse)service.Any(new Hello { Name = "World" });
+        var response = service.Post(new Deposit { DepositAmount = 12.0m, UserId = 1 });
 
-        Assert.That(response.Result, Is.EqualTo("Hello, World!"));
+        Assert.AreEqual(200, (int)response.ResponseCode);
+        Assert.NotNull(response.TransactionId);
+
     }
 }

@@ -13,7 +13,7 @@ public class IntegrationTest
 
     class AppHost : AppSelfHostBase
     {
-        public AppHost() : base(nameof(IntegrationTest), typeof(MyServices).Assembly) { }
+        public AppHost() : base(nameof(IntegrationTest), typeof(DepositHandler).Assembly) { }
 
         public override void Configure(Container container)
         {
@@ -37,8 +37,9 @@ public class IntegrationTest
     {
         var client = CreateClient();
 
-        var response = client.Get(new Hello { Name = "World" });
+        var response = client.Post(new Deposit { DepositAmount = 12.0m, UserId = 1});
 
-        Assert.That(response.Result, Is.EqualTo("Hello, World!"));
+        Assert.AreEqual(200, (int)response.ResponseCode);
+        Assert.NotNull(response.TransactionId);
     }
 }

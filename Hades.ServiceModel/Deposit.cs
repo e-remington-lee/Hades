@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Hades.ServiceModel
 {
-   [Route("/deposit", "GET")]
+   [Route("/deposit", "POST")]
     public class Deposit : IReturn<DepositResponse>
     {
-        public int DepositId { get; set; }
+        public int UserId { get; set; }
         public decimal DepositAmount { get; set; }
     }
 
     public class DepositResponse
     {
+        public string TransactionId { get; set; }
         public int ResponseCode { get; set; }
     }
 }
