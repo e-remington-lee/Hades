@@ -9,6 +9,6 @@ namespace Hades.ServiceInterface.Engines
 {
     public interface IDepositEngine
     {
-        public DepositResponse ProcessDeposit(int userId, DepositType depositType, decimal depositAmount);
+        public Task<DataResponse<DepositResponse>> ProcessDeposit(int userId, DepositType depositType, decimal depositAmount);
     }
 }

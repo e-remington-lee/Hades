@@ -20,11 +20,11 @@ public class UnitTest
     public void OneTimeTearDown() => appHost.Dispose();
 
     [Test]
-    public void Can_call_MyServices()
+    public async void Can_call_MyServices()
     {
         var service = appHost.Container.Resolve<DepositHandler>();
 
-        var response = service.Post(new Deposit { DepositAmount = 12.0m, UserId = 1 });
+        var response = await service.Post(new Deposit { DepositAmount = 12.0m, UserId = 1 });
 
         Assert.AreEqual(200, (int)response.ResponseCode);
         Assert.NotNull(response.TransactionId);

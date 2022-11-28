@@ -9,14 +9,16 @@ namespace Hades.ServiceInterface.Engines
 {
     public class DepositEngine : IDepositEngine
     {
-        public DepositResponse ProcessDeposit(int userId, DepositType depositType, decimal depositAmount)
+        public async Task<DataResponse<DepositResponse>> ProcessDeposit(int userId, DepositType depositType, decimal depositAmount)
         {
             Console.WriteLine($"userID {userId}, depositType {depositType}, amount {depositAmount}");
-            return new DepositResponse
+            var response = new DepositResponse
             {
                 ResponseCode = 200,
                 TransactionId = Guid.NewGuid().ToString()
             };
+
+            return new DataResponse<DepositResponse> { Data = response, Status = 200 };
         }
 
         

@@ -2,6 +2,7 @@ using Funq;
 using ServiceStack;
 using Hades.ServiceInterface;
 using Hades.ServiceInterface.Engines;
+using ServiceStack.Validation;
 
 [assembly: HostingStartup(typeof(Hades.AppHost))]
 
@@ -12,6 +13,7 @@ public class AppHost : AppHostBase, IHostingStartup
     public void Configure(IWebHostBuilder builder) => builder
         .ConfigureServices(services => {
             // Configure ASP.NET Core IOC Dependencies
+            services.AddSingleton<IDepositEngine>(new DepositEngine());
         });
 
     public AppHost() : base("Hades", typeof(DepositHandler).Assembly) {}
@@ -25,7 +27,7 @@ public class AppHost : AppHostBase, IHostingStartup
 
         var HadesConfiguration = AppSettings.Get<HadesConfiguration>("HadesConfiguration");
         Console.WriteLine(HadesConfiguration.ToJson());
-
-        container.Register<IDepositEngine>(new DepositEngine());
+        //Plugins.Add(new ValidationFeature());
+        //container.AddSingleton<IDepositEngine>(new DepositEngine());
     }
 }
