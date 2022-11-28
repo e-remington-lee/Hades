@@ -1,4 +1,5 @@
-﻿using Hades.ServiceModel;
+﻿using Hades.ServiceInterface.Engines;
+using Hades.ServiceModel;
 using ServiceStack;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,25 @@ namespace Hades.ServiceInterface
 {
     public class DepositHandler : Service
     {
+        IDepositEngine _engine;
+
+        public DepositHandler(IDepositEngine depositEngine)
+        {
+            _engine = depositEngine;
+        }
+
         public DepositResponse Post(Deposit deposit)
         {
-            string transactionId = "abcdefg";
-            var response = new DepositResponse() { ResponseCode = 200, TransactionId = transactionId };
-            return response;
+            try
+            {
+                DepositResponse response = _engine.ProcessDeposit(deposit.UserId, deposit.DepositType, deposit.DepositAmount);
+                return response;
+            } 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new DepositResponse();
+            }
 
         }
     }

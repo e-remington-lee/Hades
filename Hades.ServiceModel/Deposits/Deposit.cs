@@ -12,6 +12,8 @@ namespace Hades.ServiceModel
     {
         public int UserId { get; set; }
         public decimal DepositAmount { get; set; }
+        
+        public DepositType DepositType { get; set; }
     }
 
     public class DepositResponse

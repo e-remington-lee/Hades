@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Hades.ServiceInterface\Hades.ServiceInterface.csproj" />
     <ProjectReference Include="..\Hades.ServiceModel\Hades.ServiceModel.csproj" />
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
 
     <PackageReference Include="NUnit" Version="3.13.*" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.1.*" />

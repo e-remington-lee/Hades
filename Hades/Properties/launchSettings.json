@@ -2,11 +2,18 @@
   "profiles": {
     "Hades": {
       "commandName": "Project",
-      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:5001/"
+      "applicationUrl": "http://localhost:5001/"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "useSSL": false,
+      "httpPort": 5001
     }
   }
 }

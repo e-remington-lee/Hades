@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="ServiceStack.Interfaces" Version="6.*" />
   </ItemGroup>
 
