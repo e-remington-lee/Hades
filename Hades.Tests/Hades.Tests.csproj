@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Hades.ServiceInterface\Hades.ServiceInterface.csproj" />
     <ProjectReference Include="..\Hades.ServiceModel\Hades.ServiceModel.csproj" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
     <PackageReference Include="FluentValidation" Version="11.4.0" />
 
     <PackageReference Include="NUnit" Version="3.13.*" />

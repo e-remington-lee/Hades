@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using Hades.ServiceInterface.Engines;
 using Hades.ServiceModel;
 using Hades.ServiceModel.Deposits;
@@ -25,21 +26,23 @@ namespace Hades.ServiceInterface
             try
             {
                 AbstractValidator<Deposit> abstractValidator = new DepositValidator();
-                var result = await abstractValidator.ValidateAsync(deposit);
-                if (result.Errors.Any())
+                (bool hasErrors, ValidationResult validationResults) = await GenericValidator.ValidateRequest<Deposit>(deposit, abstractValidator);
+                if (hasErrors)
                 {
-                    Console.Error.WriteLine($"Request has the following errors: \n{result}");
-                    return new DepositResponse();
+                    base.Response.StatusCode = 400;
+                    return new DepositResponse()
+                    {
+                        StatusMessage = validationResults.Errors.ToString()
+                    };
                 }
-
                 DataResponse<DepositResponse> response = await _engine.ProcessDeposit(deposit.UserId, deposit.DepositType, deposit.DepositAmount);
-
                 return response.Data;
             } 
             catch (Exception ex)
             {
+                base.Response.StatusCode = ex.ToStatusCode();
                 Console.WriteLine(ex.Message);
-                return new DepositResponse();
+                return new DepositResponse() {  StatusMessage = ex.Message};
             }
 
         }

@@ -17,10 +17,7 @@ namespace Hades.ServiceInterface.Engines
                 ResponseCode = 200,
                 TransactionId = Guid.NewGuid().ToString()
             };
-
             return new DataResponse<DepositResponse> { Data = response, Status = 200 };
         }
-
-        
     }
 }

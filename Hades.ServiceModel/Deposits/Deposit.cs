@@ -16,9 +16,11 @@ namespace Hades.ServiceModel
         public DepositType DepositType { get; set; }
     }
 
-    public class DepositResponse
+    public class DepositResponse : IResponse
     {
         public string TransactionId { get; set; }
         public int ResponseCode { get; set; }
+        public string StatusMessage { get; set; }
+
     }
 }
