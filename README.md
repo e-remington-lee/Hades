@@ -1,3 +1,12 @@
+# TODO
+
+SQS
+AWS secrets
+DB connection
+Load balancers
+
+
+Couldn't get it to run on any other port other than 80 in a dockerfile, even after doing https://andrewlock.net/why-isnt-my-aspnetcore-app-in-docker-working/
 # web
 
 .NET 6.0 Empty Web Template
@@ -15,9 +24,3 @@ Alternatively write new project files directly into an empty repository, using t
     $ git clone https://github.com/<User>/<ProjectName>.git
     $ cd <ProjectName>
     $ x new web
-
-### Update Server TypeScript DTOs
-
-Run the dtos package.json script to update your server dtos:
-
-    $ x scripts dtos

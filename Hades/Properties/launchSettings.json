@@ -4,16 +4,14 @@
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:5001/"
+      }
     },
     "Docker": {
       "commandName": "Docker",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "useSSL": false,
-      "httpPort": 5001
+      "useSSL": false
     }
   }
 }
