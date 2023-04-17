@@ -30,9 +30,9 @@ namespace Hades.ServiceInterface
                 if (hasErrors)
                 {
                     base.Response.StatusCode = 400;
-                    return new DepositResponse()
-                    {
-                        StatusMessage = validationResults.Errors.ToString()
+
+                    return new DepositResponse() {
+                        StatusMessage = validationResults.ToString()
                     };
                 }
                 DataResponse<DepositResponse> response = await _engine.ProcessDeposit(deposit.UserId, deposit.DepositType, deposit.DepositAmount);

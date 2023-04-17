@@ -1,6 +1,6 @@
 # TODO
 
-SQS
+SQS -- how to test consumers locally? (postman??)
 AWS secrets
 DB connection
 Load balancers
@@ -8,6 +8,8 @@ Load balancers
 
 Couldn't get it to run on any other port other than 80 in a dockerfile, even after doing https://andrewlock.net/why-isnt-my-aspnetcore-app-in-docker-working/
 # web
+
+docker run -d -p 9090:80 hades
 
 .NET 6.0 Empty Web Template
 
@@ -19,8 +21,3 @@ Couldn't get it to run on any other port other than 80 in a dockerfile, even aft
 
     $ x new web ProjectName
 
-Alternatively write new project files directly into an empty repository, using the Directory Name as the ProjectName:
-
-    $ git clone https://github.com/<User>/<ProjectName>.git
-    $ cd <ProjectName>
-    $ x new web
