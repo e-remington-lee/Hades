@@ -1,4 +1,5 @@
 ﻿using Hades.ServiceModel;
+using Hades.ServiceModel.Deposits;
 using System;
 using System.Collections.Generic;
 using System.Linq;

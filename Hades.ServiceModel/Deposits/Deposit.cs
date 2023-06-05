@@ -1,4 +1,5 @@
-﻿using ServiceStack;
+﻿using Hades.ServiceModel.Deposits;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,5 @@ namespace Hades.ServiceModel
         public decimal DepositAmount { get; set; }
         
         public DepositType DepositType { get; set; }
-    }
-
-    public class DepositResponse : IResponse
-    {
-        public string TransactionId { get; set; }
-        public int ResponseCode { get; set; }
-        public string StatusMessage { get; set; }
-
     }
 }

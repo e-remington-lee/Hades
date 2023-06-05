@@ -3,6 +3,7 @@ using ServiceStack;
 using Hades.ServiceInterface;
 using Hades.ServiceInterface.Engines;
 using ServiceStack.Validation;
+using System.Reflection;
 
 [assembly: HostingStartup(typeof(Hades.AppHost))]
 
@@ -16,7 +17,16 @@ public class AppHost : AppHostBase, IHostingStartup
             services.AddSingleton<IDepositEngine>(new DepositEngine());
         });
 
-    public AppHost() : base("Hades", typeof(DepositHandler).Assembly) {}
+    public AppHost() : base("Hades", GetAllAssemblies()) {}
+
+    private static Assembly[] GetAllAssemblies()
+    {
+        return new[] { 
+            typeof(DepositHandler).Assembly,
+            typeof(StatusHandler).Assembly,
+        };
+
+    }
 
     public override void Configure(Container container)
     {
